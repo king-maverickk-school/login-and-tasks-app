@@ -47,6 +47,23 @@ public class Login {
             return "Success! Username and password formatted correctly.";
         }
     }
-     
+    
+    public boolean loginUser(String message){
+        if (message.contains("FAIL.")){
+           return false;
+        }
+        else {
+           return true;
+       }
+   }
+   
+    public String returnLoginStatus(boolean status){
+        if (status == true){
+           return "Welcome " + fname + " " + lname + "! \nIt is great to see you.";
+        }
+        else {
+           return "FAILURE! Not logged in";
+        }
+    }
     
 }
