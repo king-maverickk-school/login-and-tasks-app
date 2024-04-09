@@ -20,6 +20,9 @@ public class Login {
         lname = "";
     }
     
+    // checks the length of the username and if there is an underscore. 
+    // username is taken as a parameter
+    // using "not if"/negative type of selection statement
     public boolean checkUserName(String uName){
         if (uName.length() >= 6 || !uName.contains("_")){
             return false;
@@ -29,13 +32,22 @@ public class Login {
         }
     }
     
+    // Checks the password complexity, password is taken as a parameter
+    // using regex Pattern and Matcher 
     public boolean checkPasswordComplexity(String pWord){
+        // (?=.*[a-z]) - used to determine if lower characters are present
+        // (?=.*[A-Z]) - used to determine if upper characters are present
+        // (?=.*[@#$%!.+-]) - used to determine if the listed symbols are present
+        // .{8,25} - (linked to above) used to check length of password
+        // $ - end of string
         String passRegex = "(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!.+-]).{8,25}$";
         Pattern pattern = Pattern.compile(passRegex);
         Matcher matcher = pattern.matcher(pWord);
         return matcher.matches();
     }
     
+    // returns a message indicating succesful/failed login.
+    // message is determined by formatting of the username and password
     public String registerUser(boolean uName, boolean pWord){
         if (uName == false) {
             return "FAIL. Username is not correctly formatted, please ensure that your username contains an underscore and is no more than 5 characters long in length.";
@@ -48,6 +60,7 @@ public class Login {
         }
     }
     
+    // uses the message from registerUser() to say whether login was successful or nah
     public boolean loginUser(String message){
         if (message.contains("FAIL.")){
            return false;
@@ -57,6 +70,7 @@ public class Login {
        }
    }
    
+    // used to display the welcome message upon successful login
     public String returnLoginStatus(boolean status){
         if (status == true){
            return "Welcome " + fname + " " + lname + "! \nIt is great to see you.";
