@@ -35,7 +35,7 @@ public class Login {
     // Checks the password complexity, password is taken as a parameter
     // using regex Pattern and Matcher 
     public boolean checkPasswordComplexity(String pWord){
-        // (?=.*[a-z]) - used to determine if lower characters are present
+        // (?=.*[a-z]) - used to determine if lower characters are present. NOT instructed but regex won't work if its all CAPS
         // (?=.*[A-Z]) - used to determine if upper characters are present
         // (?=.*[@#$%!.+-]) - used to determine if the listed symbols are present
         // .{8,25} - (linked to above) used to check length of password
@@ -50,19 +50,19 @@ public class Login {
     // message is determined by formatting of the username and password
     public String registerUser(boolean uName, boolean pWord){
         if (uName == false) {
-            return "FAIL. Username is not correctly formatted, please ensure that your username contains an underscore and is no more than 5 characters long in length.";
+            return "Username is not correctly formatted, please ensure that your username contains an underscore and is no more than 5 characters long in length.";
         }
         if (pWord == false) {
-            return "FAIL. Password is not correctly formatted, please ensure that the password contains at least 8 characters, a capital letter, a number and a special character.";
+            return "Password is not correctly formatted, please ensure that the password contains at least 8 characters, a capital letter, a number and a special character.";
         }
         else {
             return "Success! Username and password formatted correctly.";
         }
     }
     
-    // uses the message from registerUser() to say whether login was successful or nah
-    public boolean loginUser(String message){
-        if (message.contains("FAIL.")){
+    // checks to see if the login details entered now match the login details stored when registering
+    public boolean loginUser(String loginUName, String loginPWord){
+        if (!loginUName.equals(username) || !loginPWord.equals(password)){
            return false;
         }
         else {
@@ -76,7 +76,7 @@ public class Login {
            return "Welcome " + fname + " " + lname + "! \nIt is great to see you.";
         }
         else {
-           return "FAILURE! Not logged in";
+           return "Username or password incorrect, please try again.";
         }
     }
     
