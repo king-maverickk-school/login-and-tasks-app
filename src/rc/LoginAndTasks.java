@@ -10,6 +10,12 @@ public class LoginAndTasks {
     
     
     public static void main(String[] args) {
+        String tName = "Add flowers";
+        String devDeets = "Motheo";
+        String[] tNameArr = tName.split(tName);
+        String[] devDeetsArr = devDeets.split(devDeets);
+        
+        System.out.print(tNameArr[0]);
 
         JOptionPane.showMessageDialog(null, "This is the Tasks App. \nPlease register and log in before we get started!");
         
@@ -75,5 +81,9 @@ public class LoginAndTasks {
         JOptionPane.showMessageDialog(null, status);
         System.out.println(status);
         }
+    
+    public static void tasksApp() {
+        
+    }
     }
 
