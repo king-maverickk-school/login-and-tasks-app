@@ -51,4 +51,26 @@ public class Task {
         
         taskID = createTaskID(tName, tNumber, devDeets);
     }
+
+    // check the character length of the of the task description (as required)
+    public boolean checkTaskDescription(String tDescription){
+        if (tDescription.length() > 50) {
+            return false;
+        }
+        else return true;
+    }
+    
+    // print all the task details. they were set in createTask()
+    public String printTaskDetails(){
+        return "Task Name: "+ taskName + "\nTask Description: " + taskDescription
+                + "\nDeveloper: " + devDetails + "\nTask Status: " + taskStatus +
+                "\nTask Duration: " + taskDuration + "\n\nTask ID: " + taskID;
+    }
+    
+    // return the total hours of ALL the tasks
+    // they are modified in createTask()
+    public int returnTotalHours(){
+        return totalHours;
+    }
+    
 }
