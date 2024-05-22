@@ -51,4 +51,14 @@ public class Task {
         
         taskID = createTaskID(tName, tNumber, devDeets);
     }
+
+    // check the character length of the of the task description (as required)
+    public boolean checkTaskDescription(String tDescription){
+        if (tDescription.length() > 50) {
+            return false;
+        }
+        else return true;
+    }
+    
+    
 }
