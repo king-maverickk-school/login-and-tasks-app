@@ -67,5 +67,10 @@ public class Task {
                 "\nTask Duration: " + taskDuration + "\n\nTask ID: " + taskID;
     }
     
+    // return the total hours of ALL the tasks
+    // they are modified in createTask()
+    public int returnTotalHours(){
+        return totalHours;
+    }
     
 }
