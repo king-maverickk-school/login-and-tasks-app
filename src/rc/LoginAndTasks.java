@@ -1,6 +1,6 @@
 package rc;
 
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -10,43 +10,80 @@ public class LoginAndTasks {
     
     
     public static void main(String[] args) {
-        // initialise a Scanner object for user input
-        Scanner objScanner = new Scanner(System.in);
+        String tName = "Add flowers";
+        String devDeets = "Motheo";
+        String[] tNameArr = tName.split(tName);
+        String[] devDeetsArr = devDeets.split(devDeets);
+        
+        System.out.print(tNameArr[0]);
+
+        JOptionPane.showMessageDialog(null, "This is the Tasks App. \nPlease register and log in before we get started!");
         
         // declare and initialise Login object
         Login login = new Login();
         
-        // we will user login attributes because they are public
         // assigning values to attributes
-        System.out.print("Enter your first name: ");
-        login.fname = objScanner.next();
-        
-        System.out.print("\nEnter your last name: ");
-        login.lname = objScanner.next();
-        
-        System.out.print("\nEnter your desired username: ");
-        login.username = objScanner.next();
-        
-        System.out.print("\nEnter your password: ");
-        login.password = objScanner.next();
-        
-        // close the scanner safely here
-        objScanner.close();
+        // we will login attributes because they are public
+        login.fname = JOptionPane.showInputDialog("Enter your first name: ");
+                
+        login.lname = JOptionPane.showInputDialog("Enter your last name: ");
+
+        login.username = JOptionPane.showInputDialog("Enter your desired username: \nEnsure you have less than 5 characters and an underscore (_)");
+    
+        login.password = JOptionPane.showInputDialog("Enter your password: ");
                
         // performing username and password checks
         boolean unameCheck = login.checkUserName(login.username);
         boolean pWordCheck = login.checkPasswordComplexity(login.password);
-        
+
         // display the message explaining whether password or username is correctly formatted or not
         String message = login.registerUser(unameCheck, pWordCheck);
-        System.out.println(message);
+        JOptionPane.showMessageDialog(null, message);
+        while (!message.endsWith("correctly.")){
+            login.username = JOptionPane.showInputDialog("Enter your desired username: \nEnsure you have less than 5 characters and an underscore (_)");
+            unameCheck = login.checkUserName(login.username);
+            
+            login.password = JOptionPane.showInputDialog("Enter your password: ");
+            pWordCheck = login.checkPasswordComplexity(login.password);
+            
+            message = login.registerUser(unameCheck, pWordCheck);
+            JOptionPane.showMessageDialog(null, message);
+        }
         
-        // verifies that the login details entered matches the login details stored during registration
-        boolean isUserLoggedIn = login.loginUser(message);
+        logIntoApp(login);        
+    }    
+    public static void logIntoApp(Login loginObj) {
+        // ask user to enter their registered credentials.
+        String loginUName, loginPWord;
+        loginUName = JOptionPane.showInputDialog("Enter your registered username");
+        loginPWord = JOptionPane.showInputDialog("Enter your registered password");
         
-        // outputs a message. is user logged in or not
-        String status = login.returnLoginStatus(isUserLoggedIn);
+        boolean isUserLoggedIn = false;
+
+        // Use a while loop to keep prompting the user for login details until they are logged in successfully
+        while (!isUserLoggedIn) {
+            // Check if the entered login details match the stored credentials
+            isUserLoggedIn = loginObj.loginUser(loginUName, loginPWord);
+
+            // If not logged in, prompt the user to try again
+            if (!isUserLoggedIn) {
+                JOptionPane.showMessageDialog(null, "Username or password incorrect, please try again.");
+                loginUName = JOptionPane.showInputDialog("Enter your registered username");
+                loginPWord = JOptionPane.showInputDialog("Enter your registered password");
+            }
+        }
+
+        // If the loop exits, it means the user is logged in
+        // Get the login status message
+        String status = loginObj.returnLoginStatus(true);
+
+        // Display the welcome message
+        JOptionPane.showMessageDialog(null, status);
         System.out.println(status);
-    }
+        }
     
-}
+    public static void tasksApp() {
+        
+    }
+    }
+
