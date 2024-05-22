@@ -60,5 +60,12 @@ public class Task {
         else return true;
     }
     
+    // print all the task details. they were set in createTask()
+    public String printTaskDetails(){
+        return "Task Name: "+ taskName + "\nTask Description: " + taskDescription
+                + "\nDeveloper: " + devDetails + "\nTask Status: " + taskStatus +
+                "\nTask Duration: " + taskDuration + "\n\nTask ID: " + taskID;
+    }
+    
     
 }
