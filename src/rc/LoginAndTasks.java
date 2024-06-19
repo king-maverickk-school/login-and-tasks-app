@@ -7,7 +7,12 @@ import javax.swing.JOptionPane;
  * @author Motheo Moleko [ST10461408]
  */
 public class LoginAndTasks {
-    
+    // declare arrays to save the task details
+    public String[] devArray = {};
+    public String[] tNameArray = {};
+    public String[] tIDArray = {};
+    public String[] tStatusArray = {};
+    public int[] tDurationArray = {};
     
     public static void main(String[] args) {
         JOptionPane.showMessageDialog(null, "This is the Tasks App. \nPlease register and log in before we get started!");
@@ -146,6 +151,10 @@ public class LoginAndTasks {
         // display totalHours AFTER all the tasks are created
         int totalHours = task.returnTotalHours();
         JOptionPane.showMessageDialog(null, "Total hours: " + totalHours);
+    }
+    
+    public static void saveDetails() {
+        
     }
 }
 
