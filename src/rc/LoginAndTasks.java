@@ -8,11 +8,11 @@ import javax.swing.JOptionPane;
  */
 public class LoginAndTasks {
     // declare arrays to save the task details
-    public String[] devArray = {};
-    public String[] tNameArray = {};
-    public String[] tIDArray = {};
-    public String[] tStatusArray = {};
-    public int[] tDurationArray = {};
+    public static String[] devArray = {};
+    public static String[] tNameArray = {};
+    public static String[] tIDArray = {};
+    public static int[] tDurationArray = {};
+    public static String[] tStatusArray = {};
     
     public static void main(String[] args) {
         JOptionPane.showMessageDialog(null, "This is the Tasks App. \nPlease register and log in before we get started!");
@@ -153,8 +153,26 @@ public class LoginAndTasks {
         JOptionPane.showMessageDialog(null, "Total hours: " + totalHours);
     }
     
-    public static void saveDetails() {
-        
+    public static void saveDetails(int index, String devDeets, String tName,  String tID, int tDuration, String tStatus) {
+        devArray[index] = devDeets;
+        tNameArray[index] = tName;
+        tIDArray[index] = tID;
+        tDurationArray[index] = tDuration;
+        tStatusArray[index] = tStatus;
     }
+    
+    // options
+    // create one big array with all the details. Almost like Task.printTaskDetails()
+    // create several arrays for each task item and use the arrays are parallel arrays (same index = same info/task)
+    
+    // option 1: 
+    // -- one array can't hold everything because there's an int data type amongst strings (solution: use .toString() and parseInt when the info is needed)
+    // ++ the data is in one thing and its easier to fetch?
+    // -- have to work with 2D arrays which can get complex quickly
+    
+    // option 2:
+    // ++ use the details as parallel arrays
+    // ++ all the details are in their respective arrays 
+    // -- it can break easily if user doesn't enter info... unless I have a default value if the
 }
 
