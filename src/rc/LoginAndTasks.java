@@ -1,6 +1,8 @@
 package rc;
 
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -159,6 +161,33 @@ public class LoginAndTasks {
         tIDArray[index] = tID;
         tDurationArray[index] = tDuration;
         tStatusArray[index] = tStatus;
+    }
+    
+    public static int[] getDoneTasks(String[] tStatusArr) {
+        List<Integer> indexList = new ArrayList<>();
+        
+        // Iterate through the array to find indices of "Done" tasks
+        for (int i = 0; i < tStatusArr.length; i++) {
+            if (tStatusArr[i].equals("Done")) {
+                indexList.add(i);
+            }
+        }
+        
+        // Convert List<Integer> to int[]
+        int[] indices = new int[indexList.size()];
+        for (int i = 0; i < indexList.size(); i++) {
+            indices[i] = indexList.get(i);
+        }
+        
+        return indices;
+        /*
+        // in main:
+        int[] doneTaskIndices = getDoneTasks(tStatusArray);
+        // Print the indices of "Done" tasks
+        for (int index : doneTaskIndices) {
+            System.out.println("Index of 'Done': " + index);
+        }
+        */
     }
     
     // options
