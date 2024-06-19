@@ -190,18 +190,24 @@ public class LoginAndTasks {
         */
     }
     
-    // options
-    // create one big array with all the details. Almost like Task.printTaskDetails()
-    // create several arrays for each task item and use the arrays are parallel arrays (same index = same info/task)
+    public static int getLongestTask(int[] tDuration) {
+        int longest = 0;
+        for (int i = 0; i < tDuration.length - 1; i++) {
+            if (i != 0) {
+                if (tDuration[i] > tDuration[i-1]) {
+                    longest = tDuration[i];
+                }
+            } else {
+                longest = tDuration[i];
+            }
+        }
+        return longest;
+    }
     
-    // option 1: 
-    // -- one array can't hold everything because there's an int data type amongst strings (solution: use .toString() and parseInt when the info is needed)
-    // ++ the data is in one thing and its easier to fetch?
-    // -- have to work with 2D arrays which can get complex quickly
-    
-    // option 2:
-    // ++ use the details as parallel arrays
-    // ++ all the details are in their respective arrays 
-    // -- it can break easily if user doesn't enter info... unless I have a default value if the
+    // get longest task index
+    // int longest
+    // for task in tDuration
+    // if (!i = 0) ... if task[i] > task[i-1]
+    // longest = task[i]
 }
 
