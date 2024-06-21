@@ -75,4 +75,9 @@ public class Task {
         return totalHours;
     }
     
+    // remember to use AFTER the task has been created to avoid it being null or None
+    public String returnTaskID(){
+        return this.taskID;
+    }
+    
 }

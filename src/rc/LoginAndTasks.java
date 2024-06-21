@@ -1,6 +1,8 @@
 package rc;
 
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -118,6 +120,9 @@ public class LoginAndTasks {
     private static void createTask(Task task) {
         int numOfTasks = Integer.parseInt(JOptionPane.showInputDialog("Enter the number of tasks to create"));
         
+        // instantiate a new TaskDisplayApp object. This is used in create tasks.
+        TaskDisplayApp objTDisplay = new TaskDisplayApp();
+        
         // ">=" sign because loop starts at 1 and I need it to stop at the specified number of tasks
         for (int i = 1; numOfTasks >= i; i++) {
             String tName = JOptionPane.showInputDialog("Enter the Task name for task No. " + i);
@@ -140,6 +145,10 @@ public class LoginAndTasks {
             task.createTask(tName, tDescription, devDeets, i, tStatus, tDuration);
             // prints details after ALL tasks are declared
             String taskDetails = task.printTaskDetails();
+            
+            String taskID = task.returnTaskID();
+            
+            objTDisplay.saveDetails(devDeets, tName, taskID, 0, tStatus);
             JOptionPane.showMessageDialog(null, taskDetails);
         }
         
@@ -147,7 +156,6 @@ public class LoginAndTasks {
         int totalHours = task.returnTotalHours();
         JOptionPane.showMessageDialog(null, "Total hours: " + totalHours);
     }
-    
     
 }
 
