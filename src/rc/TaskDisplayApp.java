@@ -13,13 +13,13 @@ import java.util.List;
  */
 public class TaskDisplayApp {
     // declare arrays to save the task details
-    public static List<String> devArray = new ArrayList<>();
-    public static List<String> tNameArray = new ArrayList<>();
-    public static List<String> tIDArray = new ArrayList<>();
-    public static List<Integer> tDurationArray = new ArrayList<>();
-    public static List<String> tStatusArray = new ArrayList<>(); 
+    public List<String> devArray = new ArrayList<>();
+    public List<String> tNameArray = new ArrayList<>();
+    public List<String> tIDArray = new ArrayList<>();
+    public List<Integer> tDurationArray = new ArrayList<>();
+    public List<String> tStatusArray = new ArrayList<>(); 
     
-    public static void saveDetails(String devDeets, String tName,  String tID, int tDuration, String tStatus) {
+    public void saveDetails(String devDeets, String tName,  String tID, int tDuration, String tStatus) {
         devArray.add(devDeets);
         tNameArray.add(tName);
         tIDArray.add(tID);
@@ -28,7 +28,7 @@ public class TaskDisplayApp {
     }
     
     
-    public static int[] getDoneTasks(String[] tStatusArr) {
+    public int[] getDoneTasks(String[] tStatusArr) {
         List<Integer> indexList = new ArrayList<>();
         
         // Iterate through the array to find indices of "Done" tasks
