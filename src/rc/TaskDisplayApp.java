@@ -13,19 +13,20 @@ import java.util.List;
  */
 public class TaskDisplayApp {
     // declare arrays to save the task details
-    public static String[] devArray = {};
-    public static String[] tNameArray = {};
-    public static String[] tIDArray = {};
-    public static int[] tDurationArray = {};
-    public static String[] tStatusArray = {};
+    public static List<String> devArray = new ArrayList<>();
+    public static List<String> tNameArray = new ArrayList<>();
+    public static List<String> tIDArray = new ArrayList<>();
+    public static List<Integer> tDurationArray = new ArrayList<>();
+    public static List<String> tStatusArray = new ArrayList<>(); 
     
-    public static void saveDetails(int index, String devDeets, String tName,  String tID, int tDuration, String tStatus) {
-        devArray[index] = devDeets;
-        tNameArray[index] = tName;
-        tIDArray[index] = tID;
-        tDurationArray[index] = tDuration;
-        tStatusArray[index] = tStatus;
+    public static void saveDetails(String devDeets, String tName,  String tID, int tDuration, String tStatus) {
+        devArray.add(devDeets);
+        tNameArray.add(tName);
+        tIDArray.add(tID);
+        tDurationArray.add(tDuration);
+        tStatusArray.add(tStatus);
     }
+    
     
     public static int[] getDoneTasks(String[] tStatusArr) {
         List<Integer> indexList = new ArrayList<>();
