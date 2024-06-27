@@ -1,4 +1,4 @@
-package rc;
+package rc.login.and.tasks.maven;
 
 /**
  *
