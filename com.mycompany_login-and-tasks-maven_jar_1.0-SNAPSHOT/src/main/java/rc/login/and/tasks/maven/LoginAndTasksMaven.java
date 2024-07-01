@@ -5,8 +5,6 @@
 package rc.login.and.tasks.maven;
 
 import javax.swing.JOptionPane;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -85,6 +83,9 @@ public class LoginAndTasksMaven {
     // method to run Part 2 of POE
     // 
     // used once the user has succesfully logged in
+    
+    // instantiate a new TaskDisplayApp object. This is used in create tasks.
+    static TaskDisplayApp objTDisplay = new TaskDisplayApp();
     public static void tasksApp() {
         
         // Welcome message
@@ -102,7 +103,9 @@ public class LoginAndTasksMaven {
                     userOption = Integer.parseInt(JOptionPane.showInputDialog("Adding any tasks today? \n\n1) Add tasks \n2) Show Report \n3)Quit"));
                     break;
                 case 2:
-                    JOptionPane.showMessageDialog(null, "Coming soon!");
+                    JOptionPane.showMessageDialog(null, "Please use command line!");
+                    
+                    reports();
                     // this keeps the app running without the user logging in again
                     userOption = Integer.parseInt(JOptionPane.showInputDialog("Adding any tasks today? \n\n1) Add tasks \n2) Show Report \n3)Quit"));
                     break;
@@ -123,9 +126,6 @@ public class LoginAndTasksMaven {
     // takes a parameter to use Task methods
     private static void createTask(Task task) {
         int numOfTasks = Integer.parseInt(JOptionPane.showInputDialog("Enter the number of tasks to create"));
-        
-        // instantiate a new TaskDisplayApp object. This is used in create tasks.
-        TaskDisplayApp objTDisplay = new TaskDisplayApp();
         
         // ">=" sign because loop starts at 1 and I need it to stop at the specified number of tasks
         for (int i = 1; numOfTasks >= i; i++) {
@@ -161,5 +161,13 @@ public class LoginAndTasksMaven {
         JOptionPane.showMessageDialog(null, "Total hours: " + totalHours);
     }
     
+    private static void reports() {
+        objTDisplay.getDoneTasks();
+        objTDisplay.displayLongestTask();
+        objTDisplay.searchTaskByTaskName("Create Login");
+        objTDisplay.searchTasksByDeveloper("Samantha Paulson");
+        objTDisplay.deleteTaskByName("Create Reports");
+        objTDisplay.displayAll();
+    }
 }
 
